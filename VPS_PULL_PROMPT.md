@@ -1,37 +1,41 @@
-# OpenCode VPS prompt: pull and set up the one-frame reader
+# OpenCode prompt: pull and set up the one-frame reader
 
-Copy this into OpenCode on the VPS (repository: tonimaen92-sudo/redditfleet-frame-reader):
+Repository (public): https://github.com/tonimaen92-sudo/redditfleet-frame-reader.git
 
 ---
 
-You are on a Linux VPS. Set up the isolated one-frame media reader for sorting
-Reddit content into subreddits.
+You are on the machine that will run the one-frame media reader. The repository is public.
 
-1. Clone the repository:
+1. Clone it:
    git clone https://github.com/tonimaen92-sudo/redditfleet-frame-reader.git
    cd redditfleet-frame-reader
 
-2. Create the environment and install dependencies:
-   python3 -m venv .venv
-   . .venv/bin/activate
+2. Create the environment (use the block for this OS):
+   Linux/macOS:
+     python3 -m venv .venv
+     . .venv/bin/activate
+   Windows PowerShell:
+     python -m venv .venv
+     .\.venv\Scripts\Activate.ps1
+
+3. Install:
    pip install -r requirements.txt
 
-3. Configure the models:
-   cp .env.example .env
-   # Edit .env and set OPENROUTER_API_KEY, FRAME_MODEL, SORT_MODEL.
+4. Configure:
+   copy .env.example .env      (Windows)
+   cp .env.example .env        (Linux/macOS)
+   Set OPENROUTER_API_KEY, FRAME_MODEL and SORT_MODEL in .env.
 
-4. Read INSTRUCTIONS_FOR_DEEPSEEK.md before changing anything.
+5. Read INSTRUCTIONS_FOR_DEEPSEEK.md before changing anything.
 
-5. Verify the one-frame reader works:
+6. Verify one-frame reading:
    python frame_reader.py --media /path/to/test.jpg --no-rank
 
-6. Verify sorting:
+7. Verify sorting:
    python frame_reader.py --media /path/to/clip.mp4 --subreddits subreddits.json
 
 Rules:
 - Keep exactly one frame per media item. Do not restore the 3-frame 20/50/80 sample.
 - Do not add the RedditFleet comment/drafting prompt to this project.
 - Do not commit .env or any API key.
-- Report the JSON output and any errors.
-
----
+- Report the raw JSON output and any errors.
