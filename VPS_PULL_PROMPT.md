@@ -1,6 +1,6 @@
 # OpenCode VPS prompt: pull and set up the one-frame reader
 
-Copy this into OpenCode on the VPS (replace OWNER with the GitHub account):
+Copy this into OpenCode on the VPS (repository: tonimaen92-sudo/redditfleet-frame-reader):
 
 ---
 
@@ -8,7 +8,7 @@ You are on a Linux VPS. Set up the isolated one-frame media reader for sorting
 Reddit content into subreddits.
 
 1. Clone the repository:
-   git clone https://github.com/OWNER/redditfleet-frame-reader.git
+   git clone https://github.com/tonimaen92-sudo/redditfleet-frame-reader.git
    cd redditfleet-frame-reader
 
 2. Create the environment and install dependencies:
