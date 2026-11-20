@@ -31,8 +31,10 @@ You are on the machine that will run the one-frame media reader. The repository 
 6. Verify one-frame reading:
    python frame_reader.py --media /path/to/test.jpg --no-rank
 
-7. Verify sorting:
-   python frame_reader.py --media /path/to/clip.mp4 --subreddits subreddits.json
+7. Verify sorting with the assigned account list:
+   python frame_reader.py --media /path/to/clip.mp4 --subreddits subreddits/<account>.json
+
+   Each account has its own file in `subreddits/`. `subreddits.json` is the union.
 
 Rules:
 - Keep exactly one frame per media item. Do not restore the 3-frame 20/50/80 sample.
