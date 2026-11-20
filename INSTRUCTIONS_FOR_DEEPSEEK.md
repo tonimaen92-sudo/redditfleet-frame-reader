@@ -8,14 +8,14 @@ the vision model for one observation per frame. This version samples **one**
 frame (video midpoint, or the still image) and asks the vision model for a
 single structured observation that can be used to sort the post into subreddits.
 
-Original code in RedditFleet (for reference only, do not edit these on the VPS):
+Original code in the separate content engine (for reference only, do not edit these on the VPS):
 
 | Concern | Original file | Key lines |
 |---|---|---|
-| 3-frame sampling | `nsfw_comments/media.py` | `_VIDEO_FRACTIONS = (0.2, 0.5, 0.8)`; `_video_frames`; `sample_media` |
-| Bounded video decode | `nsfw_comments/media.py` | `_is_video_container`, `_encode_video_frame`, `_video_frames` |
-| Vision request | `nsfw_comments/client.py` | `describe_frames` (accepts 1 or 3 frames) |
-| Observation validation | `nsfw_comments/drafting.py` | `_vision_review` (expects one note per frame) |
+| 3-frame sampling | `content_engine/media.py` | `_VIDEO_FRACTIONS = (0.2, 0.5, 0.8)`; `_video_frames`; `sample_media` |
+| Bounded video decode | `content_engine/media.py` | `_is_video_container`, `_encode_video_frame`, `_video_frames` |
+| Vision request | `content_engine/client.py` | `describe_frames` (accepts 1 or 3 frames) |
+| Observation validation | `content_engine/drafting.py` | `_vision_review` (expects one note per frame) |
 | Media download | `backend/nsfw_autopilot_media.py` | `download_media` (browser/CDP fetch, size caps) |
 
 The standalone `frame_reader.py` here already contains the 1-frame adaptation;
